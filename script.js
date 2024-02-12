@@ -51,17 +51,21 @@ async function getWeather(city) {
   }
 }
 
-function getUserLocation() {
+async function getUserLocation() {
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition((position) => {
-      fetch(
-        `http://api.openweathermap.org/geo/1.0/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}&limit=1&appid=${apiKey}`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          getWeather(data[0].name);
-        });
-    });
+    try {
+      const position = await new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+      });
+      const response = await fetch(
+        `https://api.openweathermap.org/geo/1.0/reverse?lat=${position.coords.latitude}&lon=${position.coords.longitude}&limit=1&appid=${apiKey}`
+      );
+      const data = await response.json();
+      getWeather(data[0].name);
+      console.log(data[0].name);
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
 
@@ -72,4 +76,14 @@ searchButton.addEventListener("click", () => {
     alert("Please enter a city name");
   }
   inputBox.value = "";
+});
+
+inputBox.addEventListener("keypress", (e) => {
+  if (e.key === "Enter" && inputBox.value !== "") {
+    getWeather(inputBox.value);
+    inputBox.value = "";
+  }
+  else if (e.key === "Enter" && inputBox.value === "") {
+    alert("Please enter a city name");
+  }
 });

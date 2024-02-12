@@ -43,6 +43,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: #eaeaea;
+    border-radius: 24px;
 }
 
 .weather-app .input-box input {
@@ -60,14 +62,13 @@ body {
   border: none;
   border-radius: 50%;
   outline: none;
-  background-color: #eaeaea;
   width: 50px;
   height: 50px;
+  width: auto;
+  height: auto;
+  background-color: transparent;
   position: relative;
-}
-
-.weather-app .input-box button:hover{
-  background-color: #bfafcf;
+  left: -16px;
 }
 
 .weather-app .input-box button img {
@@ -79,14 +80,14 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.weather-app .error-text p{
-    font-size: 12px;
-    margin: 4px 0 4px 12px;
-    text-align: left;
-    display: none;
+.weather-app .error-text p {
+  font-size: 12px;
+  margin: 4px 0 4px 12px;
+  text-align: left;
+  display: none;
 }
 
-.weather-app .user-location button{
+.weather-app .user-location button {
   border: none;
   outline: none;
   background-color: #eaeaea;
@@ -98,7 +99,7 @@ body {
   margin-top: 4px;
 }
 
-.weather-app .user-location button:hover{
+.weather-app .user-location button:hover {
   background-color: #d4b0f7;
 }
 
@@ -152,59 +153,46 @@ body {
   padding-bottom: 4px;
 }
 
-
-@media screen and (max-width:400px) {
-  .weather-app .weather .weather-details{
+@media screen and (max-width: 400px) {
+  .weather-app .weather .weather-details {
     flex-direction: column;
   }
-  .weather-app .weather .weather-details .col:last-child{
+  .weather-app .weather .weather-details .col:last-child {
     margin-top: 20px;
   }
 
-  .weather-app .input-box input{
+  .weather-app .input-box input {
     font-size: 12px;
     padding: 10px 16px;
   }
 
-  .weather-app .input-box button{
+  .weather-app .input-box button {
     width: 40px;
     height: 40px;
   }
 
-  .weather-app .error-text p,.weather-app .user-location button{
+  .weather-app .error-text p,
+  .weather-app .user-location button {
     font-size: 8px;
   }
 }
 
-@media screen and (max-width:320px){
-  .weather-app .input-box{
-    background-color: #eaeaea;
-    border-radius: 24px;
-  }
-  
-  .weather-app .input-box input{
+@media screen and (max-width: 320px) {
+  .weather-app .input-box input {
     font-size: 10px;
     padding: 8px 12px;
   }
 
-  .weather-app .input-box button{
-    width: auto;
-    height: auto;
-    background-color: transparent;
-    position: relative;
-    left: -10px;
-  }
-
-  .weather-app .input-box button img{
+  .weather-app .input-box button img {
     width: 16px;
     height: 16px;
   }
 
-  .weather-app .weather h1{
+  .weather-app .weather h1 {
     font-size: 60px;
   }
 
-  .weather-app .weather h2{
+  .weather-app .weather h2 {
     font-size: 30px;
   }
 }
